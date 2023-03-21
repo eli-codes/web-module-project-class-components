@@ -1,4 +1,6 @@
 import React from "react";
+import TodoList from "./TodoList";
+import TodoForm from "./TodoForm";
 
 class App extends React.Component {
   constructor() {
@@ -8,17 +10,17 @@ class App extends React.Component {
         {
           task: "Organize Garage",
           id: 1528817077286,
-          completed: true,
+          completed: false,
         },
         {
           task: "Bake Cookies",
           id: 1528817084358,
-          completed: true,
+          completed: false,
         },
         {
           task: "Mow the lawn",
           id: 1528817084358,
-          completed: true,
+          completed: false,
         },
       ],
     };
@@ -26,26 +28,13 @@ class App extends React.Component {
 
   render() {
     const { todos } = this.state;
-    console.log(todos);
     return (
       <div>
         <h1>Todos</h1>
 
-        <ul>
-          {todos.map((todo) => {
-            return (
-              <li>
-                {todo.task}{" "}
-                {todo.completed ? <span>- completed</span> : <span></span>}
-              </li>
-            );
-          })}
-        </ul>
+        <TodoList todos={todos} />
 
-        <form>
-          <input />
-          <button>Add</button>
-        </form>
+        <TodoForm todos={todos} />
 
         <button>Clear</button>
       </div>
